@@ -4,6 +4,7 @@ GEM
     coderay (1.1.0)
     cuba (3.3.0)
       rack
+    dotenv (1.0.2)
     json (1.8.1)
     method_source (0.8.2)
     mosca (0.0.9)
@@ -25,6 +26,7 @@ PLATFORMS
 
 DEPENDENCIES
   cuba
+  dotenv
   mosca
   pry
   shotgun

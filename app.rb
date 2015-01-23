@@ -1,8 +1,12 @@
+require 'dotenv'
+
+Dotenv.load
+
 Cuba.plugin Cuba::Render
 Cuba.settings[:render][:template_engine] = "html"
 
 def client_mqtt
-  Mosca::Client.new broker: "localhost"
+  Mosca::Client.new
 end
 
 Cuba.define do
