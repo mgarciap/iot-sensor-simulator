@@ -1,0 +1,56 @@
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <title>IoT Sensor Simulator</title>
+
+    <style>
+    body{
+        background: #204B6B;
+        color: #FFFFFF;
+        font-size: 20px;
+    }
+    .container{
+        width: 300px;
+        margin: auto;
+    }
+    #temp{
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        border: 1px solid #FFF;
+        line-height: 100px;
+        text-align: center;
+    }
+    button{
+        border-radius: 10px;
+        margin: 10px 50px 0 0;
+    }
+    </style>
+    <meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;SPDY&quot;:-1}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script>
+</head>
+
+<body onload="init()">
+    <div class="container">
+        <div id="temp">30</div>
+        <button id="minus" onclick="updateTemp(-1)">-</button>
+        <button id="plus" onclick="updateTemp(+1)">+</button>
+    </div>
+
+<script>
+    function updateTemp(delta) {
+        var $temp = document.getElementById('temp');
+        var temp = parseInt($temp.innerHTML, 10);
+
+        temp += delta;
+
+        $temp.innerHTML = temp;
+        $.post("publish/" + "temperature/" + temp
+        );
+
+    }
+</script>
+</body></html>
