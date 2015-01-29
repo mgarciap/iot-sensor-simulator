@@ -38,6 +38,15 @@
       #buttons{
 	width: 100px;
       }
+      .terminal-logs{
+        width: 600px;
+        margin: 0 auto;
+        font-family: FreeMono, monospace;
+        color: #aaa;
+        background-color: #000;
+        font-size: 14px;
+        line-height: 18px;
+      }
       #logs{
         position: absolute;
 	bottom: 0px;
@@ -47,6 +56,16 @@
       #logs ul{
         overflow: auto;
 	height: 200px;
+        list-style: none;
+	padding: 0px;
+      }
+      #logs-list :last-child{
+	background-color: #A4E4A0;
+	color: black;
+      }
+      #logs-list li:before{
+        content: '>';
+        margin: 0 1em;
       }
     </style>
   </head>
@@ -66,16 +85,18 @@
         temp += delta;
         $temp.innerHTML = temp;
         $.post("publish/" + "temperature/" + temp, function(data) {
-          $('#logs ul').append('<li>'+data+'</li>');
+          var response = JSON.parse(data);
+	  response.forEach(function(item) {
+            $('#logs ul').append('<li>'+item+'</li>');
+	  });
           var elem = document.getElementById('logs-list');
           elem.scrollTop = elem.scrollHeight;
-          console.log(data);
         });
       }
     </script>
+    <div id='logs' class='terminal-logs'>
+      <h3>Logs:</h3>
+      <ul id='logs-list'></ul>
+    </div>
   </body>
-  <div id='logs' class='container'>
-    <h3>Logs:</h3>
-    <ul id='logs-list'></ul>
-  </div>
 </html>
