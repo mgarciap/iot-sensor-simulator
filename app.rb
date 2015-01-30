@@ -9,6 +9,10 @@ Cuba.settings[:render][:template_engine] = "slim"
 
 CLIENT = Mosca::Client.new
 
+def set_log_message msg
+  @message << Time.now.strftime("%D %H:%M:%S") + " #{msg}"
+end
+
 Cuba.define do
   on get do
     on root do
@@ -18,22 +22,20 @@ Cuba.define do
 
   on post do
     on "publish/:topic/:payload" do |topic, payload|
-      response = []
+      @message = []
       begin
         unless CLIENT.connected?
           CLIENT.refresh_connection
-          response << "Established connection to broker '#{CLIENT.broker}' and port '#{CLIENT.port}'"
+          set_log_message "Established connection to broker '#{CLIENT.broker}' and port '#{CLIENT.port}'"
         end
         CLIENT.publish! payload, topic_out: topic
-        response << "Published the value '#{payload}' in channel '#{topic}'"
-        res.write response
+        set_log_message "Published the value '#{payload}' in channel '#{topic}'"
       rescue Timeout::Error
-        response << "Connection timed out. Couldn't publish on broker"
-        res.write response
+        set_log_message "Connection timed out. Couldn't publish on broker"
       rescue Exception => e
-        response << "ERROR: #{e.message}"
-        res.write response
+        set_log_message "ERROR: #{e.message}"
       end
+      res.write @message
     end
   end
 end
