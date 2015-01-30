@@ -18,7 +18,11 @@ GEM
     rack (1.6.0)
     shotgun (0.9)
       rack (>= 1.0)
+    slim (2.0.3)
+      temple (~> 0.6.6)
+      tilt (>= 1.3.3, < 2.1)
     slop (3.6.0)
+    temple (0.6.8)
     tilt (2.0.1)
 
 PLATFORMS
@@ -30,4 +34,5 @@ DEPENDENCIES
   mosca
   pry
   shotgun
+  slim
   tilt
