@@ -2,8 +2,9 @@ require 'dotenv'
 
 Dotenv.load
 
+Cuba.use Rack::Static, urls: %w[/js /css], root: "public"
 Cuba.plugin Cuba::Render
-Cuba.settings[:render][:template_engine] = "html"
+Cuba.settings[:render][:template_engine] = "slim"
 
 
 CLIENT = Mosca::Client.new
@@ -11,7 +12,7 @@ CLIENT = Mosca::Client.new
 Cuba.define do
   on get do
     on root do
-      res.write partial("index")
+      render("index")
     end
   end
 
