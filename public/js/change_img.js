@@ -4,7 +4,8 @@ function changeImg () {
 
   if(i < 9) {
     $('#beer_img').attr('src','/img/beer_00' + i + '.png');
-    $.post("publish/" + "sensor/" + sensor, function(data) {
+    $.post("publish/" + "sensor/" + i, function(data) {
+      debugger;
       var response = JSON.parse(data);
       response.forEach(function(item) {
         $('#logs ul').append('<li>'+item+'</li>');
