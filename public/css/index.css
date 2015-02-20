@@ -1,32 +1,30 @@
 body {
-  background: #204B6B;
+  background: #0F171E;
   color: #FFFFFF;
   font-size: 20px;
   margin: 0;
 }
 .container {
   width: 600px;
-  margin: 0 auto;
-}
-#temp {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  border: 1px solid #FFF;
-  line-height: 100px;
-  text-align: center;
+  margin: 10px auto;
 }
 button {
   border-radius: 10px;
 }
+img {
+  height: 390px;
+  width: 245px;
+  padding: 0em 8em;
+}
 #buttons button:first-child {
   margin: 10px 39px 0 0;
 }
-#temp, #buttons {
+#sensor, #buttons {
   margin: 0 auto;
 }
 #buttons {
-  width: 100px;
+  width: 8em;
+  margin: 0em 10.5em;
 }
 .terminal-logs {
   width: 600px;
@@ -44,7 +42,7 @@ button {
 }
 #logs ul {
   overflow: auto;
-  height: 200px;
+  height: 100px;
   list-style: none;
   padding: 0px;
 }
