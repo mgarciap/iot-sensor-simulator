@@ -1,11 +1,11 @@
 var i = 0;
+var value = 100;
 function changeImg () {
   i++;
 
   if(i < 9) {
     $('#beer_img').attr('src','/img/beer_00' + i + '.png');
-    $.post("publish/" + "sensor/" + i, function(data) {
-      debugger;
+    $.post("publish/" + "sensor/" + value, function(data) {
       var response = JSON.parse(data);
       response.forEach(function(item) {
         $('#logs ul').append('<li>'+item+'</li>');
@@ -17,10 +17,18 @@ function changeImg () {
   else {
     $('#error_msg').show();
   }
+
+  if(i == 1) {
+    value -= 16;
+  }
+  else {
+    value -= 14;
+  }
 }
 
 function firstImg () {
   i = 0;
+  value = 100;
   changeImg();
 }
 

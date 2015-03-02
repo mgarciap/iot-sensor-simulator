@@ -12,7 +12,7 @@ module LogsHelpers
         set_timestamp_for_logs "Established connection to broker '#{CLIENT.broker}' and port '#{CLIENT.port}'"
       end
       CLIENT.publish! payload, topic_out: topic
-      set_timestamp_for_logs "Published the value '#{payload}' in channel '#{topic}'"
+      set_timestamp_for_logs "Published the value '#{payload}%' in channel '#{topic}'"
     rescue Timeout::Error
       set_timestamp_for_logs "Connection timed out. Couldn't publish on broker"
     rescue Exception => e
