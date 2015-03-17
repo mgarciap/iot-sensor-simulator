@@ -1,0 +1,56 @@
+body {
+  background: #0F171E;
+  color: #FFFFFF;
+  font-size: 20px;
+  margin: 0;
+}
+.container {
+  width: 600px;
+  margin: 10px auto;
+}
+button {
+  border-radius: 10px;
+}
+img {
+  height: 390px;
+  width: 245px;
+  padding: 0em 8em;
+}
+#buttons button:first-child {
+  margin: 10px 39px 0 0;
+}
+#sensor, #buttons {
+  margin: 0 auto;
+}
+#buttons {
+  width: 8em;
+  margin: 0em 10em;
+}
+.terminal-logs {
+  width: 600px;
+  margin: 0 auto;
+  font-family: FreeMono, monospace;
+  color: #aaa;
+  background-color: #000;
+  font-size: 14px;
+  line-height: 18px;
+}
+#logs {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+#logs ul {
+  overflow: auto;
+  height: 100px;
+  list-style: none;
+  padding: 0px;
+}
+#logs-list :last-child {
+  background-color: #A4E4A0;
+  color: black;
+}
+#logs-list li:before {
+  content: '>';
+  margin: 0 1em;
+}
