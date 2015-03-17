@@ -1,0 +1,18 @@
+iotsensorsimultor:
+  image: mgarciap/iot-sensor-simulator
+  links:
+  - mosquitto
+  environment:
+    MOSCA_BROKER: mosquitto
+  ports:
+  - "9393"  
+
+mosquitto:
+  image: mgarciap/mosquitto
+
+nodered:
+  image: mgarciap/node-red
+  links:
+  - mosquitto
+  ports:
+  - "1880" 
